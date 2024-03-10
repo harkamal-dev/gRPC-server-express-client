@@ -1,0 +1,24 @@
+syntax="proto3";
+
+service CommentService {
+    rpc getAll (Empty) returns (CommentsList) {};
+    rpc get (CommentId) returns (Comment) {};
+    rpc create (Comment) returns (Comment) {};
+}
+
+message Empty {}
+
+message CommentId {
+    string id = 1;
+}
+
+message Comment {
+    string id = 1;
+    string body = 2;
+    string postId = 3;
+    string userId = 4;
+}
+
+message CommentsList {
+    repeated Comment comments = 1;
+}
